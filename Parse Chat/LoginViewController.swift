@@ -56,6 +56,7 @@ class LoginViewController: UIViewController {
                 print(error.localizedDescription)
             } else{
                 print("User Signed Up successfully")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
         }
      }
@@ -80,6 +81,7 @@ class LoginViewController: UIViewController {
             }
             else{
                  print("User logged in successfully")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 
             }
         }
