@@ -118,14 +118,13 @@
 		7D6AD89F2043403E0029B716 /* Parse Chat */ = {
 			isa = PBXGroup;
 			children = (
+				7D7942AC204531BB004FFB75 /* Views */,
+				7D7942AB20453192004FFB75 /* ViewControllers */,
 				7D6AD8A02043403E0029B716 /* AppDelegate.swift */,
 				7D6AD8A42043403E0029B716 /* Main.storyboard */,
 				7D6AD8A72043403E0029B716 /* Assets.xcassets */,
 				7D6AD8A92043403E0029B716 /* LaunchScreen.storyboard */,
 				7D6AD8AC2043403E0029B716 /* Info.plist */,
-				7D6AD8CE204352000029B716 /* LoginViewController.swift */,
-				7D6AD8D0204369A90029B716 /* ChatViewController.swift */,
-				7D6AD8D2204380260029B716 /* ChatCell.swift */,
 			);
 			path = "Parse Chat";
 			sourceTree = "<group>";
@@ -146,6 +145,23 @@
 				7D6AD8C22043403E0029B716 /* Info.plist */,
 			);
 			path = "Parse ChatUITests";
+			sourceTree = "<group>";
+		};
+		7D7942AB20453192004FFB75 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7D6AD8D0204369A90029B716 /* ChatViewController.swift */,
+				7D6AD8CE204352000029B716 /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7D7942AC204531BB004FFB75 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7D6AD8D2204380260029B716 /* ChatCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		880275FD6A301041266DF496 /* Frameworks */ = {
