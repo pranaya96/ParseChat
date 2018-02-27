@@ -11,8 +11,9 @@ import Parse
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var usernameField: UITextField!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var usernameField: UITextField!
     
     @IBOutlet weak var passwordField: UITextField!
     override func viewDidLoad() {
@@ -30,6 +31,7 @@ class LoginViewController: UIViewController {
 
   
      @IBAction func onSignUp(_ sender: Any) {
+        activityIndicator.startAnimating()
         let newUser = PFUser()
         let username = usernameField.text
         let password = passwordField.text
@@ -54,14 +56,29 @@ class LoginViewController: UIViewController {
         newUser.signUpInBackground { (success: Bool, error:Error?) in
             if let error = error{
                 print(error.localizedDescription)
+                let errorString = error.localizedDescription
+                
+                let alertController = UIAlertController(title: "Try again", message: errorString, preferredStyle: .alert)
+                
+                // add ok button
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: {
+                    (action) in
+                })
+                alertController.addAction(okAction)
+                self.activityIndicator.stopAnimating()
+                // Show the errorString somewhere and let the user try again.
+                self.present(alertController, animated: true)
+                
             } else{
                 print("User Signed Up successfully")
+                self.activityIndicator.stopAnimating()
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
         }
      }
     
     @IBAction func onLogIn(_ sender: Any) {
+        activityIndicator.startAnimating()
         let username = usernameField.text
         let password = passwordField.text
         
@@ -78,9 +95,22 @@ class LoginViewController: UIViewController {
         PFUser.logInWithUsername(inBackground: username!, password: password!) { (user: PFUser?, error: Error?) in
             if let  error = error{
                 print("User log in failed: \(error.localizedDescription)")
+                let errorString = error.localizedDescription
+                
+                let alertController = UIAlertController(title: "Try again", message: errorString, preferredStyle: .alert)
+                
+                // add ok button
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: {
+                    (action) in
+                })
+                alertController.addAction(okAction)
+                // Show the errorString somewhere and let the user try again.
+                self.activityIndicator.stopAnimating()
+                self.present(alertController, animated: true)
             }
             else{
                  print("User logged in successfully")
+                self.activityIndicator.stopAnimating()
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 
             }
@@ -94,6 +124,7 @@ class LoginViewController: UIViewController {
             // handle response here.
         }
         alertController.addAction(OKAction)
+        self.activityIndicator.stopAnimating()
         present(alertController, animated: true)
     }
     

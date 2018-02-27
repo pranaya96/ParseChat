@@ -21,6 +21,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             configuration.applicationId = "CodePath-Parse"
             configuration.server = "http://45.79.67.127:1337/parse"
         }))
+        
+        if let currentUser = PFUser.current() {
+            print("Welcome back \(currentUser.username!) 😀")
+                
+                // TODO: Load Chat view controller and set as root view controller
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let chatViewController = storyboard.instantiateViewController(withIdentifier: "ChatViewController")
+            window?.rootViewController = chatViewController
+        
+        }
+        NotificationCenter.default.addObserver(forName: Notification.Name("didLogout"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("Logout notification received")
+            logOut()
+        }
+        func logOut() {
+            // Logout the current user
+            PFUser.logOutInBackground(block: { (error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    print("Successful loggout")
+                    // Load and show the login view controller
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+                    self.window?.rootViewController = loginViewController
+                }
+            })
+        }
+        
 
         return true
     }

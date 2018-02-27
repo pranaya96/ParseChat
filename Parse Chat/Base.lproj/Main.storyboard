@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Parse_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Parse_Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,13 +55,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dXY-Pg-tVm">
+                                <rect key="frame" x="154" y="232" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.24941787925647674" green="0.24029283489343489" blue="0.24029283489343489" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="dXY-Pg-tVm" id="661-xc-5Ql"/>
                         <outlet property="passwordField" destination="fzb-tF-jzT" id="SLJ-mX-gA5"/>
-                        <outlet property="usernameField" destination="fzb-tF-jzT" id="K2U-Mq-3aZ"/>
+                        <outlet property="usernameField" destination="Qq2-gF-h3X" id="is3-gv-obG"/>
                         <segue destination="ZHA-PO-Y2c" kind="presentation" identifier="loginSegue" id="iVm-vX-l3B"/>
                     </connections>
                 </viewController>
@@ -72,7 +78,7 @@
         <!--Chat-->
         <scene sceneID="bwe-Jt-agP">
             <objects>
-                <viewController id="gzV-BS-K6T" customClass="ChatViewController" customModule="Parse_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" id="gzV-BS-K6T" customClass="ChatViewController" customModule="Parse_Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hjK-yy-X0n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,20 +110,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrZ-Ch-HVY">
+                                                    <rect key="frame" x="8" y="8" width="359" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi my name is Rishap!!!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8p-Hf-bVF">
-                                                    <rect key="frame" x="8" y="8" width="359" height="43.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="8" y="30" width="359" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="U8p-Hf-bVF" secondAttribute="bottom" constant="8" id="AG5-X0-PhH"/>
-                                                <constraint firstItem="U8p-Hf-bVF" firstAttribute="leading" secondItem="slc-ZW-Fzy" secondAttribute="leading" constant="8" id="AMN-3s-B1k"/>
-                                                <constraint firstAttribute="trailing" secondItem="U8p-Hf-bVF" secondAttribute="trailing" constant="8" id="iKr-gM-mLL"/>
-                                                <constraint firstItem="U8p-Hf-bVF" firstAttribute="top" secondItem="slc-ZW-Fzy" secondAttribute="top" constant="8" id="x4g-Iy-7UT"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="U8p-Hf-bVF" secondAttribute="bottom" constant="10" id="Cd3-af-5h2"/>
+                                                <constraint firstItem="U8p-Hf-bVF" firstAttribute="top" secondItem="YrZ-Ch-HVY" secondAttribute="bottom" constant="5" id="FZz-W7-Ftd"/>
+                                                <constraint firstAttribute="trailing" secondItem="YrZ-Ch-HVY" secondAttribute="trailing" constant="8" id="JMc-89-bZ5"/>
+                                                <constraint firstItem="U8p-Hf-bVF" firstAttribute="leading" secondItem="slc-ZW-Fzy" secondAttribute="leading" constant="8" id="SfM-X3-c4m"/>
+                                                <constraint firstItem="YrZ-Ch-HVY" firstAttribute="top" secondItem="slc-ZW-Fzy" secondAttribute="top" constant="8" id="XXf-Ek-uIB"/>
+                                                <constraint firstAttribute="trailing" secondItem="U8p-Hf-bVF" secondAttribute="trailing" constant="8" id="cUy-a6-beL"/>
+                                                <constraint firstItem="YrZ-Ch-HVY" firstAttribute="leading" secondItem="slc-ZW-Fzy" secondAttribute="leading" constant="8" id="yU8-SE-PmN"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textMessageLabel" destination="U8p-Hf-bVF" id="VaX-sE-Cuo"/>
+                                            <outlet property="userNameLabel" destination="YrZ-Ch-HVY" id="nmP-vC-iRO"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -125,7 +144,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vwC-3R-kfb"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Chat" id="z9Q-Ge-gqv"/>
+                    <navigationItem key="navigationItem" title="Chat" id="z9Q-Ge-gqv">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="N5n-xF-cde">
+                            <connections>
+                                <action selector="onLogOut:" destination="gzV-BS-K6T" id="oW9-fk-Wff"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="messageField" destination="Wu9-5l-ivG" id="QO1-fx-wLg"/>
                         <outlet property="tableView" destination="wbu-JA-SCE" id="yua-Xo-fJQ"/>
